@@ -27,7 +27,7 @@ export const useAuth = (code) => {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
           axios
-            .post("http://localhost:4000/refresh", {
+            .post("https://spotify-ap.herokuapp.com/refresh", {
               refreshToken: refreshToken,
             })
             .then(res => {
