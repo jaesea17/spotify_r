@@ -7,7 +7,7 @@ export const useAuth = (code) => {
     const [expiresIn, setExpiresIn] = useState();
 
     useEffect(() => {
-        axios.post("http://localhost:4000/login",{
+        axios.post("https://spotify-ap.herokuapp.com/",{
             code
         })
         .then(res => {
