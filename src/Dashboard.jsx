@@ -38,6 +38,7 @@ const Dashboard = ({ code }) => {
         return () => (cancel = true)
     }, [search, accessToken])
 
+    
     return(
         <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
             <div className="container-sec">
@@ -50,7 +51,7 @@ const Dashboard = ({ code }) => {
                         />
                 </div>
                 <div>
-                    {/* <button><Link to="/mylibrary"></Link>My Library</button> */}
+                    <button><Link to="/mylibrary">My Library</Link></button>
                 </div>
                 
                 
@@ -61,9 +62,9 @@ const Dashboard = ({ code }) => {
                 <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
                     {searchResults.map(track => {
                     return(
-                        <>
-                            <TrackResult track={track} key={track.url} />
-                        </>
+                        <div key={track.url}>
+                            <TrackResult track={track} />
+                        </div>
                     )
                 
                 })}</div>

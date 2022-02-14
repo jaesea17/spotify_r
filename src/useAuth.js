@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { baseUrl } from "./url";
 
 export const useAuth = (code) => {
     const [accessToken, setAccessToken] = useState();
@@ -7,7 +8,7 @@ export const useAuth = (code) => {
     const [expiresIn, setExpiresIn] = useState();
 
     useEffect(() => {
-        axios.post("https://spotify-ap.herokuapp.com/",{
+        axios.post(`${baseUrl}/login`,{
             code
         })
         .then(res => {
@@ -17,6 +18,7 @@ export const useAuth = (code) => {
             window.history.pushState({}, null, "/")
         })
         .catch((err) => {
+            console.log(err)
             window.location = '/';
         })
         
@@ -27,14 +29,14 @@ export const useAuth = (code) => {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
           axios
-            .post("https://spotify-ap.herokuapp.com/refresh", {
+            .post(`${baseUrl}/refresh`, {
               refreshToken: refreshToken,
             })
             .then(res => {
               setAccessToken(res.data.accessToken)
               setExpiresIn(res.data.expiresIn)
             })
-            .catch(() => {
+            .catch((err) => {
               window.location = "/"
             })
         }, (expiresIn - 60) * 1000)
