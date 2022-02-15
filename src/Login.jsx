@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap"
 import { baseUrl } from "./url";
+import { redirectUri } from "./url";
 
 
 
@@ -9,7 +10,6 @@ const Login = () => {
   
   const [clientId, setClientId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const redirectUri = "http://localhost:3000"
   
   const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`
   

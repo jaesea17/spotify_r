@@ -17,7 +17,8 @@ const MyLibrary = () => {
     }, [])
     
     return(
-      <>{allMusics.map((music) => {
+      <> <h2>My Library</h2>
+      {allMusics.map((music) => {
         return(
             <div key={music._id}>
                 <MusicFromDatabase music={music} />
